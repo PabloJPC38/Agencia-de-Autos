@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <!-- font awesome cdn link  -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- custom css file link  -->
+        <link rel="stylesheet"  th:href="@{/css/style.css}">
+
+        
+        <script
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            
+<script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
+       <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous">
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+        
+        <title>Auto</title>
+
+    </head>
+    <body>
+
+        <header class="header">
+
+            <div id="menu-btn" class="fas fa-bars"></div>
+
+            <a href="#" class="logo"> <span>max</span>wheels </a>
+
+            <nav class="navbar">
+                <a th:href="@{/}">home</a>
+                <a href="#estilo">vehicles</a>
+                <a href="#services">services</a>
+                <a href="#featured">featured</a>
+                <a href="#reviews">reviews</a>
+                <a href="#contact">contact</a>
+                <a th:href="@{/lista}">control</a>
+            </nav>
+
+            <div id="login-btn">
+                <button class="btn1">login</button>
+                <i class="far fa-user"></i>
+            </div>
+
+        </header>
+
+        
+
+            
+        
+            <img class="img-fluid img-portada" th:src="@{/imagen/auto-portada/__${auto.id}__}" alt="">
+        
+
+        <section class="auto" th:object="${auto}">
+            
+            <div class="card-group">
+                <div class="card border border-white">
+                    <div class="auto-product" >
+                        <div class="auto-small-img">
+                            
+                            <img th:if="${auto.color} == 0" th:each="estilo1 : ${auto.estilo1}" th:src="@{/imagen/auto-estilo/__${estilo1.id}__}" alt="" onclick="imgFunction(this)" >
+                            <img th:if="${auto.color} == 1" th:each="estilo1 : ${auto.estilo1}" th:src="@{/imagen/auto-estilo/__${estilo1.id}__}" alt="" onclick="imgFunction(this)" >
+                            <img th:if="${auto.color} == 2" th:each="estilo2 : ${auto.estilo2}" th:src="@{/imagen/auto-estilo/__${estilo2.id}__}" alt="" onclick="imgFunction(this)" >
+                            <img th:if="${auto.color} == 3" th:each="estilo3 : ${auto.estilo3}" th:src="@{/imagen/auto-estilo/__${estilo3.id}__}" alt="" onclick="imgFunction(this)" >
+                            <img th:if="${auto.color} == 4" th:each="estilo4 : ${auto.estilo4}" th:src="@{/imagen/auto-estilo/__${estilo4.id}__}" alt="" onclick="imgFunction(this)" >
+                            <img th:if="${auto.color} == 5" th:each="estilo5 : ${auto.estilo5}" th:src="@{/imagen/auto-estilo/__${estilo5.id}__}" alt="" onclick="imgFunction(this)" >
+                            
+                        </div>
+                        <div id="estilo" class="img-container">
+
+                            <img th:if="${auto.color} == 0" th:src="@{/imagen/auto-estilo/__${auto.estilo1[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="400"
+                            height="200">
+                            <img th:if="${auto.color} == 1" th:src="@{/imagen/auto-estilo/__${auto.estilo1[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="400"
+                            height="200">
+                            <img th:if="${auto.color} == 2" th:src="@{/imagen/auto-estilo/__${auto.estilo2[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="400"
+                            height="200">
+                            <img th:if="${auto.color} == 3" th:src="@{/imagen/auto-estilo/__${auto.estilo3[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="400"
+                            height="200">
+                            <img th:if="${auto.color} == 4" th:src="@{/imagen/auto-estilo/__${auto.estilo4[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="400"
+                            height="200">
+                            <img th:if="${auto.color} == 5" th:src="@{/imagen/auto-estilo/__${auto.estilo5[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="400"
+                            height="200">
+                            
+
+                        </div>
+                        
+                        <div class="d-inline p-5 ms-5">
+                            <a th:with="color=1" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button  class="btn  btn rounded-circle border border-dark ms-5 me-2 btn-style" name="estiloBtn" th:style="|background-color:${auto.colores[0]}|"></button>
+                            </a>
+                            <a th:with="color=2" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="submit" class="btn btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[1]}|" ></button>
+                            </a>
+                            <a th:with="color=3" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="button" class="btn  btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[2]}|"></button>
+                            </a>
+                            <a th:with="color=4" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="button" class="btn  btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[3]}|"></button>
+                            </a>
+                            <a th:with="color=5" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="button" class="btn  btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[4]}|"></button>
+                            </a>
+                        </div>        
+                    </div>                   
+                </div> 
+            </div>
+        </section>
+
+           
+            <section class="icons-container">
+
+                <div class="icons">
+                    <i class="bi bi-car-front-fill"></i>
+                    <div class="content">
+                        <h3>Diseño</h3>
+                        <p th:text="${auto.disenio}"></p>
+                    </div>
+                </div>
+            
+                <div class="icons">
+                    <i class="bi bi-speedometer"></i>
+                    <div class="content">
+                        <h3>Performance</h3>
+                        <p th:text="${auto.performance}"></p>
+                    </div>
+                </div>
+            
+                <div class="icons">
+                    <i class="bi bi-gem"></i>
+                    <div class="content">
+                        <h3>Exclusividad</h3>
+                        <p th:text="${auto.exclusividad}"></p>
+                    </div>
+                </div>
+            
+                
+            
+            </section>
+
+
+        <footer>
+            <section class="footer" id="footer">
+
+                <div class="box-container">
+
+                    <div class="box">
+                        <h3>our branches</h3>
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i> india
+                        </a>
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i> japan
+                        </a>
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i>
+                            france </a>
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i>
+                            russia </a>
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i> USA
+                        </a>
+                    </div>
+
+                    <div class="box">
+                        <h3>quick links</h3>
+                        <a href="#"> <i class="fas fa-arrow-right"></i> home
+                        </a>
+                        <a href="#"> <i class="fas fa-arrow-right"></i> vehicles
+                        </a>
+                        <a href="#"> <i class="fas fa-arrow-right"></i> services
+                        </a>
+                        <a href="#"> <i class="fas fa-arrow-right"></i> featured
+                        </a>
+                        <a href="#"> <i class="fas fa-arrow-right"></i> reviews
+                        </a>
+                        <a href="#"> <i class="fas fa-arrow-right"></i> contact
+                        </a>
+                    </div>
+
+                    <div class="box">
+                        <h3>contact info</h3>
+                        <a href="#"> <i class="fas fa-phone"></i> +123-456-7890
+                        </a>
+                        <a href="#"> <i class="fas fa-phone"></i> +111-222-3333
+                        </a>
+                        <a href="#"> <i class="fas fa-envelope"></i>
+                            shaikhanas@gmail.com </a>
+                        <a href="#"> <i class="fas fa-map-marker-alt"></i>
+                            mumbai, india - 400104 </a>
+                    </div>
+
+                    <div class="box">
+                        <h3>contact info</h3>
+                        <a href="#"> <i class="fab fa-facebook-f"></i> facebook
+                        </a>
+                        <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+                        <a href="#"> <i class="fab fa-instagram"></i> instagram
+                        </a>
+                        <a href="#"> <i class="fab fa-linkedin"></i> linkedin
+                        </a>
+                        <a href="#"> <i class="fab fa-pinterest"></i> pinterest
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="credit"> created by mr. web designer | all rights
+                    reserved </div>
+
+            </section>
+        </footer>
+
+        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+        
+        <script th:inline="javascript">
+
+            function imgFunction(smallImg){
+
+                var fullImg = document.getElementById("img_01");
+                fullImg.src = smallImg.src;
+
+                $('.zoomWindowContainer div').stop().css("background-image","url("+fullImg.src+")");
+
+            }
+
+
+        </script>
+        <script th:inline="javascript">
+            $(".car").ezPlus({
+                zoomType: 'window',
+                lensShape: 'round',
+                lensSize: 200
+            });
+
+            
+    
+        </script>
+
+        <script th:inline="javascript">
+
+                function StyleFunction(estilo){
+            
+               
+                    var fullImg = document.getElementById("img_01");
+                    fullImg.src = smallImg.src;
+
+                    var src2=$(this).val().toString();
+                    $("#img_01").attr("src",src2);
+  
+                }
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <!-- font awesome cdn link  -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- custom css file link  -->
+
+        <link rel="stylesheet" href="style.css" th:href="@{/css/style.css}">
+    
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous">
+        
+        
+        
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+        <script
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/js/modalBtn.js"
+            th:src="@{js/modalBtn.js}"></script>
+        <script src="js/script.js"></script>
+
+
+        <title>Editar</title>
+
+    </head>
+
+    <body>
+
+
+        <header class="header">
+
+            <a class="btn btn-warning btn-lg" id="btn-return" th:href="@{/}" role="button">Volver</a>
+    
+           
+        </header>
+
+
+       
+        <!----------------------Listado de autos----------------------------------------->
+       
+        
+    
+        <div class="container-lista">
+
+            <h1 href="#" id="logo"> <span>max</span>wheels </h1>
+    
+
+            <table class="table table-dark">
+                <thead> 
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-success  me-md-2 mt-2 mb-2 newbtn"
+                        style="--bs-btn-font-size: 1.5rem;"
+                        data-bs-toggle="modal" data-bs-target="#createModal">Agregar</button>
+                    </div>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Imagen promocional</th>
+                        <!--
+                        <th scope="col">Estilo 1</th>
+                        <th scope="col">Estilo 2</th>
+                        <th scope="col">Estilo 3</th>
+                        -->
+                        <th scope="col">Imagen de portada</th>
+                        <th scope="col">Configurar</th>
+                    </tr>
+                </thead>
+                <tbody th:each="auto : ${autos}" class="table">
+                    <tr>
+                        <th scope="row" th:text="${auto.id}"></th>
+                        <td th:text="${auto.name}"></td>
+                        <td th:text="${auto.marca}"></td>
+                        <td th:text="${auto.precio}"></td>
+                        
+                        <td><img th:src="@{/imagen/auto/__${auto.id}__}"
+                                width="130" height="100" alt=""></td>
+
+                        <!--
+                        <td><img th:src="@{/imagen/auto-estilo1/__${auto.id}__}"
+                            width="130" height="100" alt=""></td>
+                        <td><img th:src="@{/imagen/auto-estilo2/__${auto.id}__}"
+                            width="130" height="100" alt=""></td>
+                        <td><img th:src="@{/imagen/auto-estilo3/__${auto.id}__}"
+                            width="130" height="100" alt=""></td>
+                        -->
+                        <td><img th:src="@{/imagen/auto-portada/__${auto.id}__}"
+                            width="130" height="100" alt=""></td>       
+                        <td>
+                            <button type="button" class="btn btn-info me-2 eBtn"
+                                style="--bs-btn-font-size: 1.5rem;"
+                                data-bs-toggle="modal"
+                                data-bs-target="#updateModal"
+                                th:value="${auto.id}">Editar</button>
+                            <button type="button" class="btn btn-danger
+                                text-dark delBtn" style="--bs-btn-font-size:
+                                1.5rem;" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                                th:value="${auto.id}">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!------------------------------------------------------------------------------>
+        <!--#Modal form agregar-->
+        <div class="myFormCreate">
+            <form th:action="@{/lista/nuevo}" method="post"
+                enctype="multipart/form-data">
+                <div class="modal fade" id="createModal"
+                    data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" role="dialog"
+                    aria-labelledby="createModalLabel" aria-hidden="true">
+
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="createModalLabel">Agregar
+                                    Auto</h5>
+                                <button type="button" class="close"
+                                    data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="username"
+                                        class="col-form-label">Nombre:</label>
+                                    <input type="text" class="form-control"
+                                        id="name" name="name" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password"
+                                        class="col-form-label">Marca:</label>
+                                    <input type="text" class="form-control"
+                                        id="marca" name="marca" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Precio</label>
+                                    <input type="text" class="form-control"
+                                        id="precio" name="precio" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Diseño</label>
+                                    <input type="text" class="form-control"
+                                        id="disenio" name="disenio" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Performance</label>
+                                    <input type="text" class="form-control"
+                                        id="performance" name="performance" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Exclusividad</label>
+                                    <input type="text" class="form-control"
+                                        id="exclusividad" name="exclusividad" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágen promocional</label>
+                                    <input type="file" class="form-control"
+                                        id="imagen" name="image" value="">
+                                </div>
+                                <select class="form-select" multiple aria-label="multiple select example" name="colores">
+                                    <option selected>Seleccionar Colores</option>
+                                    <option value="white">Blanco</option>
+                                    <option value="black">Negro</option>
+                                    <option value="lightgrey">Gris</option>
+                                    <option value="darkgrey">Gris Oscuro</option>
+                                    <option value="lightgreen">Verde</option>
+                                    <option value="darkgreen">Verde Oscuro</option>
+                                    <option value="red">Rojo</option>
+                                    <option value="darkred">Rojo Oscuro</option>
+                                    <option value="blue">Azul</option>
+                                    <option value="darkblue">Azul Oscuro</option>
+                                    <option value="turquoise">Celeste</option>
+                                    <option value="orange">Naranja</option>
+                                    <option value="yellow">Amarillo</option>
+                                </select>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo1</label>
+                                    <input type="file" class="form-control"
+                                        id="estilo1" name="estilo1" value="" multiple/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo2</label>
+                                    <input type="file" class="form-control"
+                                        id="estilo2" name="estilo2" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo3</label>
+                                    <input type="file" class="form-control"
+                                        id="estilo3" name="estilo3" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo4</label>
+                                    <input type="file" class="form-control"
+                                        id="estilo4" name="estilo4" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo5</label>
+                                    <input type="file" class="form-control"
+                                        id="estilo5" name="estilo5" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágen de portada</label>
+                                    <input type="file" class="form-control"
+                                        id="portada" name="portada" value="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--Fin form agregar-->
+
+
+        <!--#Modal form actualizar-->
+        <div class="myFormUpdate">
+            <form th:action="@{/lista/actualizar}" method="post"
+                enctype="multipart/form-data">
+                <div class="modal fade" id="updateModal"
+                    data-bs-backdrop="static" tabindex="-1" role="dialog"
+                    aria-labelledby="updateModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="updateModalLabel">Modificar
+                                    Auto</h5>
+                                <button type="button" class="close"
+                                    data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="alert alert-info">
+                                    Modifique los campos necesarios
+                                </p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        id="id" name="id" value="" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username"
+                                        class="col-form-label">Nombre:</label>
+                                    <input type="text" class="form-control"
+                                        id="name" name="name" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password"
+                                        class="col-form-label">Marca:</label>
+                                    <input type="text" class="form-control"
+                                        id="marca" name="marca" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Precio</label>
+                                    <input type="text" class="form-control"
+                                        id="precio" name="precio" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Diseño</label>
+                                    <input type="text" class="form-control"
+                                        id="disenio" name="disenio" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Performance</label>
+                                    <input type="text" class="form-control"
+                                        id="performance" name="performance" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Exclusividad</label>
+                                    <input type="text" class="form-control"
+                                        id="exclusividad" name="exclusividad" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágen promocional</label>
+                                    <input type="file" class="form-control"
+                                        id="imagen" name="image" value="">
+                                </div>
+                                <select class="form-select" multiple aria-label="multiple select example" name="colores">
+                                    <option selected>Seleccionar Colores</option>
+                                    <option value="white">Blanco</option>
+                                    <option value="black">Negro</option>
+                                    <option value="lightgrey">Gris</option>
+                                    <option value="darkgrey">Gris Oscuro</option>
+                                    <option value="lightgreen">Verde</option>
+                                    <option value="darkgreen">Verde Oscuro</option>
+                                    <option value="red">Rojo</option>
+                                    <option value="darkred">Rojo Oscuro</option>
+                                    <option value="blue">Azul</option>
+                                    <option value="darkblue">Azul Oscuro</option>
+                                    <option value="turquoise">Celeste</option>
+                                    <option value="orange">Naranja</option>
+                                    <option value="yellow">Amarillo</option>
+                                </select>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo1</label>
+                                    <input type="file" class="form-control"
+                                        id="style1" name="estilo1" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo2</label>
+                                    <input type="file" class="form-control"
+                                        id="style2" name="estilo2" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo3</label>
+                                    <input type="file" class="form-control"
+                                        id="style3" name="estilo3" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo4</label>
+                                    <input type="file" class="form-control"
+                                        id="estilo4" name="estilo4" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágenes de estilo5</label>
+                                    <input type="file" class="form-control"
+                                        id="estilo5" name="estilo5" value="" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Selecionar
+                                        imágen de portada</label>
+                                    <input type="file" class="form-control"
+                                        id="portada" name="portada" value="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--Fin form actualizar-->
+        <div class="myFormDelete">
+            <form th:action="@{/lista/eliminar}" method="post">
+                <div class="modal fade" id="deleteModal"
+                    data-bs-backdrop="static" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Eliminar
+                                    Auto</h5>
+                                <button type="button" class="close"
+                                    data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="alert alert-danger">
+                                    Los datos serán eliminados, ¿Está seguro?
+                                </p>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control"
+                                        id="ide" name="id" value=""/>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--#Modal form actualizar-->
+
+        
+
+
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between
+                align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>
+                <a href="/" class="col-md-4 d-flex align-items-center
+                    justify-content-center mb-3 mb-md-0 me-md-auto link-dark
+                    text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use
+                            xlink:href="#bootstrap"/></svg>
+                    </a>
+
+                    <ul class="nav col-md-4 justify-content-end">
+                        <li class="nav-item"><a href="#" class="nav-link px-2
+                                text-muted">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2
+                                text-muted">Features</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2
+                                text-muted">Pricing</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2
+                                text-muted">FAQs</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2
+                                text-muted">About</a></li>
+                    </ul>
+                </footer>
+            </div>
+
+
+
+        </body>
+
+
+       
+
+    </html>
