@@ -630,6 +630,17 @@ section{
 
 /*************Estilos Extras********************************/
 
+.color-buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Ajusta el valor según sea necesario */
+  }
+  
+  .color-buttons-container button {
+    width: 40px; /* Ajusta el ancho de los botones según sea necesario */
+    height: 40px; /* Ajusta la altura de los botones según sea necesario */
+  }
+
 .container-carga{
 
     padding-top: 10rem;
@@ -683,8 +694,8 @@ th,td{
 }
 .btn-style{
    
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
 }
 
 .auto-small-img img{
@@ -692,21 +703,19 @@ th,td{
     width: 10px 0;
     cursor: pointer;
     display: block;
+    border: 1px solid black;
+    margin-top: 30px;
+    margin-left: 50px;
 }
 .auto-small-img{
     float: left;
-}
-
-.img-container img{
-
-    height: 600;
-    width: 800;
-    margin-right: 500px;
+    
 }
 
 .img-container{
     float: right;
-    
+    margin-left: 30px;
+    width: 50px;
 }
 
 .form-registro{

@@ -48,8 +48,7 @@
 
         <header class="header">
 
-            <a class="btn btn-warning btn-lg" id="btn-return" th:href="@{/}" role="button">Volver</a>
-    
+            <h1 th:href="@{/}" id="logo"> <span>max</span>wheels </h1>
            
         </header>
 
@@ -60,9 +59,6 @@
         
     
         <div class="container-lista">
-
-            <h1 href="#" id="logo"> <span>max</span>wheels </h1>
-    
 
             <table class="table table-dark">
                 <thead> 
@@ -121,6 +117,8 @@
                     </tr>
                 </tbody>
             </table>
+            <a class="btn btn-warning btn-lg" id="btn-return" th:href="@{/}" role="button">Volver</a>
+            
         </div>
         <!------------------------------------------------------------------------------>
         <!--#Modal form agregar-->
@@ -412,37 +410,16 @@
 
         <!--#Modal form actualizar-->
 
-        
-
-
-        <div class="container">
-            <footer class="d-flex flex-wrap justify-content-between
-                align-items-center py-3 my-4 border-top">
-                <p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>
-                <a href="/" class="col-md-4 d-flex align-items-center
-                    justify-content-center mb-3 mb-md-0 me-md-auto link-dark
-                    text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32"><use
-                            xlink:href="#bootstrap"/></svg>
-                    </a>
-
-                    <ul class="nav col-md-4 justify-content-end">
-                        <li class="nav-item"><a href="#" class="nav-link px-2
-                                text-muted">Home</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2
-                                text-muted">Features</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2
-                                text-muted">Pricing</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2
-                                text-muted">FAQs</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2
-                                text-muted">About</a></li>
-                    </ul>
-                </footer>
+        <footer style="text-align: center; background-color: #f9d806;">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <p>&copy; Maxwheels. Todos los derechos reservados.</p>
+                </div>
+              </div>
             </div>
-
-
-
+          </footer>
+       
         </body>
 
 

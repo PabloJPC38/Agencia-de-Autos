@@ -51,7 +51,8 @@ public class autoServices {
                     style2.add(imgServ.guardar(e2));
             }
             car.setEstilo2(style2);
-
+        
+        
         List<imagen> style3 = new ArrayList<imagen>();
 
             for (MultipartFile e3 : estilo3) {
@@ -59,20 +60,24 @@ public class autoServices {
             }
             car.setEstilo3(style3);
         
-        List<imagen> style4 = new ArrayList<imagen>();
+        if (colores.size()!=3){
+            
+            
+            List<imagen> style4 = new ArrayList<imagen>();
 
-            for (MultipartFile e4 : estilo4) {
-                style4.add(imgServ.guardar(e4));
-            }
-            car.setEstilo4(style4);
+                for (MultipartFile e4 : estilo4) {
+                    style4.add(imgServ.guardar(e4));
+                }
+                car.setEstilo4(style4);
         
-        List<imagen> style5 = new ArrayList<imagen>();
+            
+            List<imagen> style5 = new ArrayList<imagen>();
 
-            for (MultipartFile e5 : estilo5) {
-                style5.add(imgServ.guardar(e5));
-            }
-            car.setEstilo5(style5);    
-
+                for (MultipartFile e5 : estilo5) {
+                    style5.add(imgServ.guardar(e5));
+                }
+                car.setEstilo5(style5);    
+        }
         autoRepo.save(car);
         System.out.println("Guardado!!");
         
@@ -190,9 +195,7 @@ public class autoServices {
     @Transactional
     public List<auto> listarDatos(){
 
-        List<auto> autos = new ArrayList();
-        autos = autoRepo.findAll();
-        return autos;
+        return autoRepo.findAll();
     }
 
     public auto getOne(String id){

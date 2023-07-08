@@ -58,9 +58,8 @@ public class autoController {
     }
 
     @PostMapping("lista/nuevo")
-    public String guardarDatos(@RequestParam String name, String marca,String precio,String disenio,String performance,String exclusividad, MultipartFile image,@RequestParam List<String> colores, List<MultipartFile> estilo1,List<MultipartFile> estilo2,List<MultipartFile> estilo3,List<MultipartFile> estilo4,List<MultipartFile> estilo5,MultipartFile portada) throws Exception{
+    public String guardarDatos(@RequestParam String name, String marca,String precio,String disenio,String performance,String exclusividad, MultipartFile image,@RequestParam List<String> colores,@RequestParam List<MultipartFile> estilo1,List<MultipartFile> estilo2,List<MultipartFile> estilo3,List<MultipartFile> estilo4,List<MultipartFile> estilo5,MultipartFile portada) throws Exception{
 
-        
         autoServ.guardarDatos(name,marca,precio,disenio,performance,exclusividad,image,colores,estilo1,estilo2,estilo3,estilo4,estilo5,portada);
         return "redirect:../lista";
 
@@ -82,16 +81,27 @@ public class autoController {
     }
     
     @GetMapping("auto/{id}")
-    public ModelAndView autoDetalles(@PathVariable String id,Model model){
+    public ModelAndView autoDetalles(@PathVariable String id){
         
         auto car = autoServ.getOne(id);
+        int cant = 5; 
         car.getEstilo1().sort(Comparator.comparing(imagen::getName));
         car.getEstilo2().sort(Comparator.comparing(imagen::getName));
         car.getEstilo3().sort(Comparator.comparing(imagen::getName));
-        car.getEstilo4().sort(Comparator.comparing(imagen::getName));
-        car.getEstilo5().sort(Comparator.comparing(imagen::getName));
         
-        return new ModelAndView("auto").addObject("auto", car);
+        if (car.getColores().size() == 3){
+
+            cant = 3;
+        }
+        
+        else{
+            
+            car.getEstilo4().sort(Comparator.comparing(imagen::getName));
+            car.getEstilo5().sort(Comparator.comparing(imagen::getName));
+        }
+        
+        //System.out.println("CANT:"+cant);
+        return new ModelAndView("auto").addObject("auto", car).addObject("cant", cant);
 
     }
 

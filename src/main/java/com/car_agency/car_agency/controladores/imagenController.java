@@ -36,36 +36,35 @@ public class imagenController {
 
     @GetMapping("/auto/{id}")
     public ResponseEntity<byte[]> imagenAuto (@PathVariable String id){
+    
         auto car = autoServ.getOne(id);
         
-       byte[] imagen= car.getImg().getCont();
-       
-       HttpHeaders headers = new HttpHeaders();
-       
-       headers.setContentType(MediaType.IMAGE_JPEG);
-       
-        
-        
-       return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
+        byte[] imagen= car.getImg().getCont();
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
     }
 
     @GetMapping("/auto-portada/{id}")
     public ResponseEntity<byte[]> autoPortada (@PathVariable String id){
+        
         auto car = autoServ.getOne(id);
         
-       byte[] imagen= car.getPortada().getCont();
-       
-       HttpHeaders headers = new HttpHeaders();
-       
-       headers.setContentType(MediaType.IMAGE_JPEG);
-       
-        
-        
-       return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
+        byte[] imagen= car.getPortada().getCont();
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
     }
 
     @GetMapping("/auto-estilo1/{id}")
     public ResponseEntity<List<byte[]>> autoEstilo1 (@PathVariable String id){
+        
         auto car = autoServ.getOne(id);
 
         List<byte[]> imagenes = new ArrayList<>();
