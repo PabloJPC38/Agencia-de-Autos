@@ -18,7 +18,9 @@ public class imagenServices {
     private imagenRepository imagenRepo;
     
     public imagen guardar(MultipartFile img) throws Exception{
+        
         if (img != null) {
+            
             try {
                 
                 imagen Img = new imagen();
@@ -36,7 +38,8 @@ public class imagenServices {
     
 
     public imagen actualizar(MultipartFile img, String idImagen) throws Exception{
-         if (img != null) {
+         
+        if (img != null) {
             try {
                 
                 imagen Img = new imagen();
@@ -79,5 +82,18 @@ public class imagenServices {
         return null;
     }
     
-       
+    @Transactional
+    public void eliminarImagen(String id){
+
+        imagenRepo.deleteById(id);
+    }
+
+    @Transactional
+    public void eliminarImagenes(List<imagen> lista){
+
+        for (imagen l : lista){
+
+            imagenRepo.deleteById(l.getId());
+        }
+    }
 }

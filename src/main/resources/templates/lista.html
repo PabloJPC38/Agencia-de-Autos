@@ -48,7 +48,7 @@
 
         <header class="header">
 
-            <h1 th:href="@{/}" id="logo"> <span>max</span>wheels </h1>
+            <h1 th:href="@{/principal}" id="logo"> <span>max</span>wheels </h1>
            
         </header>
 
@@ -92,14 +92,6 @@
                         <td><img th:src="@{/imagen/auto/__${auto.id}__}"
                                 width="130" height="100" alt=""></td>
 
-                        <!--
-                        <td><img th:src="@{/imagen/auto-estilo1/__${auto.id}__}"
-                            width="130" height="100" alt=""></td>
-                        <td><img th:src="@{/imagen/auto-estilo2/__${auto.id}__}"
-                            width="130" height="100" alt=""></td>
-                        <td><img th:src="@{/imagen/auto-estilo3/__${auto.id}__}"
-                            width="130" height="100" alt=""></td>
-                        -->
                         <td><img th:src="@{/imagen/auto-portada/__${auto.id}__}"
                             width="130" height="100" alt=""></td>       
                         <td>
@@ -117,7 +109,7 @@
                     </tr>
                 </tbody>
             </table>
-            <a class="btn btn-warning btn-lg" id="btn-return" th:href="@{/}" role="button">Volver</a>
+            <a class="btn btn-warning btn-lg" id="btn-return" th:href="@{/principal}" role="button">Volver</a>
             
         </div>
         <!------------------------------------------------------------------------------>
@@ -309,7 +301,7 @@
                                         id="imagen" name="image" value="">
                                 </div>
                                 <select class="form-select" multiple aria-label="multiple select example" name="colores">
-                                    <option selected>Seleccionar Colores</option>
+                                    <option selected></option>
                                     <option value="white">Blanco</option>
                                     <option value="black">Negro</option>
                                     <option value="lightgrey">Gris</option>

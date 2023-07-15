@@ -53,28 +53,29 @@
     
 <div class="login-form-container">
 
-    <span id="close-login-form" class="fas fa-times"></span>
+  <span id="close-login-form" class="fas fa-times"></span>
 
-    <form action="">
-        <h3>INICIO DE SESIÓN DE USUARIO</h3>
-        <input type="email" placeholder="email" class="box">
-        <input type="password" placeholder="password" class="box">
-        <p> Olvidó su contraseña <a href="#">haga click aquí</a> </p>
-        <input type="submit" value="login" class="btn1">
-        <p> No tiene una cuenta <a th:href="@{/registrar}">regístrece</a> </p>
-    </form>
+  <form th:action="@{/logincheck}" method="post">
+      <h3>INICIO DE SESIÓN DE USUARIO</h3>
+      <input type="email" placeholder="email" class="box" name="email">
+      <input type="password" placeholder="password" class="box" name="password">
+      <p> Olvidó su contraseña <a href="#">haga click aquí</a> </p>
+      <input type="submit" value="login" class="btn1">
+      <p> No tiene una cuenta <a th:href="@{/registrar}">regístrece</a> </p>
+  </form>
 
 </div>
 
 <section class="home" id="home">
 
-    <h3 data-speed="-2" class="home-parallax">find your car</h3>
+  <h3 data-speed="-2" class="home-parallax">Encuentra tu auto</h3>
 
-    <img data-speed="5" class="home-parallax" src="/image/home-img.png" alt="">
+  <img data-speed="5" class="home-parallax" src="/image/home-img.png" alt="">
 
-    <button data-speed="7"  class="btn1 home-parallax" id="btn-link">explore cars</button>
+  <a data-speed="7" href="#vehicles" class="btn1 home-parallax">Explorar</a>
 
 </section>
+
 <footer style="text-align: center; background-color: #f9d806;">
     <div class="container">
       <div class="row">

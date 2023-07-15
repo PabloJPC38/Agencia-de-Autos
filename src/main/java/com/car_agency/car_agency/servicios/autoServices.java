@@ -84,84 +84,124 @@ public class autoServices {
     }
 
 
-
-
-
     @Transactional
     public void modificarDatos(String id ,String name,String marca,String precio,String disenio,String performance,String exclusividad, MultipartFile image,List<String> colores,List<MultipartFile> estilo1,List<MultipartFile> estilo2,List<MultipartFile> estilo3,List<MultipartFile> estilo4,List<MultipartFile> estilo5,MultipartFile portada) throws Exception{
+        
         Optional <auto> respuesta = autoRepo.findById(id);
         if (respuesta.isPresent()){
 
             auto car = respuesta.get();
+            System.out.println("COLORES:"+colores);
+            System.out.println("COLORESSSS:"+car.getColores());
             if (!name.isEmpty()){
+                
                 car.setName(name);
             }
-            if(!image.isEmpty()){
-                imagen Img = imgServ.guardar(image);
+            
+            if (image.getSize() > 0) {
+                imagen Img = imgServ.actualizar(image, car.getImg().getId());
                 car.setImg(Img);
             }
+            
             if(!colores.isEmpty()){
                 car.setColores(colores);
             }
+            
             if(!marca.isEmpty()){
                 car.setMarca(marca);
             }
+            
             if(!precio.isEmpty()){
                 car.setPrecio(precio);
             }
+            
             if(!disenio.isEmpty()){
                 car.setDisenio(disenio);
             }
+            
             if(!performance.isEmpty()){
                 car.setPerformance(performance);
             }
+            
             if(!exclusividad.isEmpty()){
                 car.setExclusividad(exclusividad);
             }
-            if(!estilo1.isEmpty()){
+            
+            if (estilo1.stream().anyMatch(e1 -> e1.getSize() > 0)){
 
                 List<imagen> style1 = new ArrayList<imagen>();
+                int index = 0;
 
                 for (MultipartFile e1 : estilo1) {
-                    style1.add(imgServ.guardar(e1));
+                    
+                    style1.add(imgServ.actualizar(e1,car.getEstilo1().get(index).getId()));
+
+                    index++;
                 }
                 car.setEstilo1(style1);
                 
             }
-            if(!estilo2.isEmpty()){
+            
+            if (estilo2.stream().anyMatch(e2 -> e2.getSize() > 0)){
+                
                 List<imagen> style2 = new ArrayList<imagen>();
+                int index = 0;
 
                 for (MultipartFile e2 : estilo2) {
-                    style2.add(imgServ.guardar(e2));
+
+                    style2.add(imgServ.actualizar(e2,car.getEstilo2().get(index).getId()));
+
+                    index++;
                 }
                 car.setEstilo2(style2);
             }
-            if(!estilo3.isEmpty()){
+            
+            if (estilo3.stream().anyMatch(e3 -> e3.getSize() > 0)){
+                
                 List<imagen> style3 = new ArrayList<imagen>();
+                int index = 0;
 
                 for (MultipartFile e3 : estilo3) {
-                    style3.add(imgServ.guardar(e3));
+                    
+                    style3.add(imgServ.actualizar(e3,car.getEstilo3().get(index).getId()));
+
+                    index++;
                 }
                 car.setEstilo3(style3);
             }
-
-            if(!estilo4.isEmpty()){
+            
+            if (estilo4.stream().anyMatch(e4 -> e4.getSize() > 0)){
                 
                 List<imagen> style4 = new ArrayList<imagen>();
+                int index = 0;
 
                 for (MultipartFile e4 : estilo4) {
-                    style4.add(imgServ.guardar(e4));
+                    
+                    style4.add(imgServ.actualizar(e4,car.getEstilo4().get(index).getId()));
+
+                    index++;
                 }
                 car.setEstilo4(style4);   
             }
 
-            if(!estilo5.isEmpty()){
+            if (estilo5.stream().anyMatch(e5 -> e5.getSize() > 0)){
+                
                 List<imagen> style5 = new ArrayList<imagen>();
+                int index = 0;
 
                 for (MultipartFile e5 : estilo5) {
-                    style5.add(imgServ.guardar(e5));
+                    
+                    style5.add(imgServ.actualizar(e5,car.getEstilo5().get(index).getId()));
+
+                    index++;
                 }
                 car.setEstilo5(style5); 
+            }
+
+            if(portada.getSize() > 0){
+
+                imagen port = imgServ.actualizar(portada, car.getPortada().getId());
+                car.setPortada(port);
             }
 
             autoRepo.save(car);
@@ -187,6 +227,26 @@ public class autoServices {
 
     @Transactional
     public void eliminarDatos(String id){
+        
+        
+        Optional <auto> respuesta = autoRepo.findById(id);
+        
+        if (respuesta.isPresent()){
+            
+            auto car = respuesta.get();
+            
+            imgServ.eliminarImagen(car.getImg().getId());
+            imgServ.eliminarImagen(car.getPortada().getId());
+            imgServ.eliminarImagenes(car.getEstilo1());
+            imgServ.eliminarImagenes(car.getEstilo2());
+            imgServ.eliminarImagenes(car.getEstilo3());
+            
+            if (car.getColores().size() > 3){
+            
+                imgServ.eliminarImagenes(car.getEstilo4());
+                imgServ.eliminarImagenes(car.getEstilo5());
+            }
+        }
         
         autoRepo.deleteById(id);
         System.out.println("Eliminado!!");

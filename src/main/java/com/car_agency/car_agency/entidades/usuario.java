@@ -28,5 +28,10 @@ public class usuario {
     private Rol rol;
     private Boolean activo;
 
+
+    public usuario(){
+
+        
+    }
     
 }

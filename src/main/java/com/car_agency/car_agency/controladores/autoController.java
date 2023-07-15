@@ -4,7 +4,6 @@ import java.util.Comparator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.car_agency.car_agency.entidades.auto;
 import com.car_agency.car_agency.entidades.imagen;
 import com.car_agency.car_agency.servicios.autoServices;
+import com.car_agency.car_agency.servicios.usuarioServices;
 
 @Controller
 @RequestMapping("/")
@@ -24,11 +24,22 @@ public class autoController {
     @Autowired
     private autoServices autoServ;
 
-    @GetMapping("/index")
+    @Autowired
+    private usuarioServices userServ;
 
+    @GetMapping("/")
     public String Index(){
 
         return "index.html";
+    }
+
+    @GetMapping("/principal")
+    public String paginaPrincipal(ModelMap model){
+
+        List<auto> autos = autoServ.listarDatos();
+        model.addAttribute("autos",autos);
+
+        return "principal.html";
     }
 
 
@@ -39,14 +50,15 @@ public class autoController {
         return "registrar.html";
     }
 
-    @GetMapping("/")
-    public String paginaPrincipal(ModelMap model){
+    @PostMapping("/registrar/usuario_nuevo")
+    public String guardarUsuarioRegistrado(@RequestParam String name,@RequestParam String email, @RequestParam String password){
 
-        List<auto> autos = autoServ.listarDatos();
-        model.addAttribute("autos",autos);
+        userServ.guardarUsuario(name, email, password);
 
-        return "principal.html";
+        return "redirect:/";
     }
+
+    
 
     @GetMapping("lista")
     public String listarAutos(ModelMap model){
@@ -88,7 +100,7 @@ public class autoController {
         car.getEstilo1().sort(Comparator.comparing(imagen::getName));
         car.getEstilo2().sort(Comparator.comparing(imagen::getName));
         car.getEstilo3().sort(Comparator.comparing(imagen::getName));
-        
+
         if (car.getColores().size() == 3){
 
             cant = 3;
@@ -100,7 +112,6 @@ public class autoController {
             car.getEstilo5().sort(Comparator.comparing(imagen::getName));
         }
         
-        //System.out.println("CANT:"+cant);
         return new ModelAndView("auto").addObject("auto", car).addObject("cant", cant);
 
     }

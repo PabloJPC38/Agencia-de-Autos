@@ -38,7 +38,6 @@ public class imagenController {
     public ResponseEntity<byte[]> imagenAuto (@PathVariable String id){
     
         auto car = autoServ.getOne(id);
-        
         byte[] imagen= car.getImg().getCont();
 
         HttpHeaders headers = new HttpHeaders();
@@ -130,50 +129,5 @@ public class imagenController {
         IOUtils.copy(is, response.getOutputStream());
     }
 
-/* 
-    @GetMapping("/auto-estilo1/{id}")
-    public ResponseEntity<byte[]> autoEstilo1 (@PathVariable String id){
-        auto car = autoServ.getOne(id);
-        
-       byte[] imagen= car.getEstilo1().getCont();
-       
-       HttpHeaders headers = new HttpHeaders();
-       
-       headers.setContentType(MediaType.IMAGE_JPEG);
-       
-        
-        
-       return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
-    }
-    @GetMapping("/auto-estilo2/{id}")
-    public ResponseEntity<byte[]> autoEstilo2 (@PathVariable String id){
-        auto car = autoServ.getOne(id);
-        
-       byte[] imagen= car.getEstilo2().getCont();
-       
-       HttpHeaders headers = new HttpHeaders();
-       
-       headers.setContentType(MediaType.IMAGE_JPEG);
-       
-        
-        
-       return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
-    }
-    @GetMapping("/auto-estilo3/{id}")
-    public ResponseEntity<byte[]> autoEstilo3 (@PathVariable String id){
-        auto car = autoServ.getOne(id);
-        
-       byte[] imagen= car.getEstilo3().getCont();
-       
-       HttpHeaders headers = new HttpHeaders();
-       
-       headers.setContentType(MediaType.IMAGE_JPEG);
-       
-        
-        
-       return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
-    }
-*/
-    
     
 }

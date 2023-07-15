@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,33 +44,26 @@
 
     <a href="#" class="logo"> <span>max</span>wheels </a>
 
+    <!--
+        <span sec:authentication="principal.authorities"></span>
+    -->
+
     <nav class="navbar">
         <a href="#home">home</a>
         <a href="#vehicles">vehículos</a>
-        <a th:href="@{/lista}">control</a>
+        
+        
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/lista}">control</a>
     </nav>
 
-    <div id="login-btn">
-        <button class="btn1">login</button>
-        <i class="far fa-user"></i>
-    </div>
-
+    
+        <form th:action="@{/logout}" method="post">
+        <button type="submit"  class="btn1">logout</button>
+        </form>
+   
 </header> 
     
-<div class="login-form-container">
-
-    <span id="close-login-form" class="fas fa-times"></span>
-
-    <form th:action="@{/logincheck}" method="post">
-        <h3>user login</h3>
-        <input type="email" placeholder="email" name="email" class="box">
-        <input type="password" placeholder="password" name="password" class="box">
-        <p> forget your password <a href="#">click here</a> </p>
-        <input type="submit" value="login" class="btn1">
-        <p> don't have an account <a th:href="@{/registrar}">create one</a> </p>
-    </form>
-
-</div>
+   
 
 <section class="home" id="home">
 
@@ -103,9 +96,6 @@
                         <span class="fas fa-circle"></span> petrol
                         <span class="fas fa-circle"></span> 183mph
                     </p>
-                    <!--
-                    <a class="btn btn-warning p-3 fs-3 autoBtn" th:href="@{/auto}" th:attr="data-id=@{/imagen/auto/__${auto.id}__}">check out</a>
-                    -->
                     <a class="btn btn-warning p-3 fs-3 autoBtn" th:href="@{/auto/__${auto.id}__}">check out</a>
                 </div>
             </div>
@@ -143,10 +133,9 @@
   
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-<script src="js/script.js"></script>
+<script type="text/javascript" src="js/swiper.js" th:src="@{js/swiper.js}"></script>
 
-<script type="text/javascript" src="../static/js/modalBtn.js"
-th:src="@{js/modalBtn.js}"></script>
+
 
 </body>
 </html>
