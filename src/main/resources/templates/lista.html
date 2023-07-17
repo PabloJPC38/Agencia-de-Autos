@@ -34,9 +34,7 @@
         <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
         <script
             src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="../static/js/modalBtn.js"
-            th:src="@{js/modalBtn.js}"></script>
-        <script src="js/script.js"></script>
+        
 
 
         <title>Editar</title>
@@ -48,70 +46,53 @@
 
         <header class="header">
 
-            <h1 th:href="@{/principal}" id="logo"> <span>max</span>wheels </h1>
+            <h1 th:href="@{/principal}" id="logo"> <span>Spring</span> Cars</h1>
            
         </header>
 
 
        
-        <!----------------------Listado de autos----------------------------------------->
-       
-        
-    
-        <div class="container-lista">
+<!----------------------Listado de autos----------------------------------------->
+<div class="container-lista">
+    <div class="table-responsive">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Imagen promocional</th>
+                    <th scope="col">Imagen de portada</th>
+                    <th scope="col">Configurar</th>
+                </tr>
+            </thead>
+            <tbody th:each="auto : ${autos}" class="table">
+                <tr>
+                    <th scope="row" th:text="${auto.id}"></th>
+                    <td th:text="${auto.name}"></td>
+                    <td th:text="${auto.marca}"></td>
+                    <td th:text="${auto.precio}"></td>
+                    <td><img th:src="@{/imagen/auto/__${auto.id}__}" width="130" height="100" alt=""></td>
+                    <td><img th:src="@{/imagen/auto-portada/__${auto.id}__}" width="130" height="100" alt=""></td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-info me-2 eBtn" style="--bs-btn-font-size: 1.5rem;" data-bs-toggle="modal" data-bs-target="#updateModal" th:value="${auto.id}">Editar</button>
+                            <button type="button" class="btn btn-danger text-dark delBtn" style="--bs-btn-font-size: 1.5rem;" data-bs-toggle="modal" data-bs-target="#deleteModal" th:value="${auto.id}">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-success me-md-2 mt-2 mb-2 newbtn" style="--bs-btn-font-size: 1.5rem;" data-bs-toggle="modal" data-bs-target="#createModal">Agregar</button>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <a class="btn btn-warning btn-lg" id="btn-return" th:href="@{/principal}" role="button">Volver</a>
+    </div>
+</div>
 
-            <table class="table table-dark">
-                <thead> 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button type="button" class="btn btn-success  me-md-2 mt-2 mb-2 newbtn"
-                        style="--bs-btn-font-size: 1.5rem;"
-                        data-bs-toggle="modal" data-bs-target="#createModal">Agregar</button>
-                    </div>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Imagen promocional</th>
-                        <!--
-                        <th scope="col">Estilo 1</th>
-                        <th scope="col">Estilo 2</th>
-                        <th scope="col">Estilo 3</th>
-                        -->
-                        <th scope="col">Imagen de portada</th>
-                        <th scope="col">Configurar</th>
-                    </tr>
-                </thead>
-                <tbody th:each="auto : ${autos}" class="table">
-                    <tr>
-                        <th scope="row" th:text="${auto.id}"></th>
-                        <td th:text="${auto.name}"></td>
-                        <td th:text="${auto.marca}"></td>
-                        <td th:text="${auto.precio}"></td>
-                        
-                        <td><img th:src="@{/imagen/auto/__${auto.id}__}"
-                                width="130" height="100" alt=""></td>
-
-                        <td><img th:src="@{/imagen/auto-portada/__${auto.id}__}"
-                            width="130" height="100" alt=""></td>       
-                        <td>
-                            <button type="button" class="btn btn-info me-2 eBtn"
-                                style="--bs-btn-font-size: 1.5rem;"
-                                data-bs-toggle="modal"
-                                data-bs-target="#updateModal"
-                                th:value="${auto.id}">Editar</button>
-                            <button type="button" class="btn btn-danger
-                                text-dark delBtn" style="--bs-btn-font-size:
-                                1.5rem;" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal"
-                                th:value="${auto.id}">Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <a class="btn btn-warning btn-lg" id="btn-return" th:href="@{/principal}" role="button">Volver</a>
-            
-        </div>
         <!------------------------------------------------------------------------------>
         <!--#Modal form agregar-->
         <div class="myFormCreate">
@@ -411,6 +392,9 @@
               </div>
             </div>
           </footer>
+
+          <script type="text/javascript" src="../static/js/modalBtn.js"
+            th:src="@{js/modalBtn.js}"></script>
        
         </body>
 

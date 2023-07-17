@@ -38,7 +38,7 @@
 
             <div id="menu-btn" class="fas fa-bars"></div>
 
-            <a th:href="@{/principal}" class="logo"> <span>max</span>wheels </a>
+            <a th:href="@{/principal}" class="logo" style="text-decoration:none"> <span>Spring</span> Cars</a>
         </header>
 
         
@@ -46,93 +46,140 @@
         
             <section class="auto container-fluid">
                 <div class="card-group">
-                    <div class="card border border-white">
-                        <div class="auto-product row">
-                            <div class="auto-small-img col-lg-2">
-                                <img th:if="${auto.color} == 0" th:each="estilo1 : ${auto.estilo1}" th:src="@{/imagen/auto-estilo/__${estilo1.id}__}" alt="" onclick="imgFunction(this)">
-                                <img th:if="${auto.color} == 1" th:each="estilo1 : ${auto.estilo1}" th:src="@{/imagen/auto-estilo/__${estilo1.id}__}" alt="" onclick="imgFunction(this)">
-                                <img th:if="${auto.color} == 2" th:each="estilo2 : ${auto.estilo2}" th:src="@{/imagen/auto-estilo/__${estilo2.id}__}" alt="" onclick="imgFunction(this)">
-                                <img th:if="${auto.color} == 3" th:each="estilo3 : ${auto.estilo3}" th:src="@{/imagen/auto-estilo/__${estilo3.id}__}" alt="" onclick="imgFunction(this)">
-                                <img th:if="${auto.color} == 4" th:each="estilo4 : ${auto.estilo4}" th:src="@{/imagen/auto-estilo/__${estilo4.id}__}" alt="" onclick="imgFunction(this)">
-                                <img th:if="${auto.color} == 5" th:each="estilo5 : ${auto.estilo5}" th:src="@{/imagen/auto-estilo/__${estilo5.id}__}" alt="" onclick="imgFunction(this)">
-                            </div>
-                            <div id="estilo" class="img-container col-lg-6">
-                                <img th:if="${auto.color} == 0" th:src="@{/imagen/auto-estilo/__${auto.estilo1[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
-                                <img th:if="${auto.color} == 1" th:src="@{/imagen/auto-estilo/__${auto.estilo1[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
-                                <img th:if="${auto.color} == 2" th:src="@{/imagen/auto-estilo/__${auto.estilo2[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
-                                <img th:if="${auto.color} == 3" th:src="@{/imagen/auto-estilo/__${auto.estilo3[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
-                                <img th:if="${auto.color} == 4" th:src="@{/imagen/auto-estilo/__${auto.estilo4[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
-                                <img th:if="${auto.color} == 5" th:src="@{/imagen/auto-estilo/__${auto.estilo5[1].id}__}" th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
-                                <div th:if="${cant} == 3" class="d-flex justify-content-center">
-                                    <a th:with="color=1" th:href="@{/estilo/__${auto.id}__/__${color}__}">
-                                        <button class="btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[0]}|"></button>
-                                    </a>
-                                    <a th:with="color=2" th:href="@{/estilo/__${auto.id}__/__${color}__}">
-                                        <button type="submit" class="btn btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[1]}|"></button>
-                                    </a>
-                                    <a th:with="color=3" th:href="@{/estilo/__${auto.id}__/__${color}__}">
-                                        <button type="button" class="btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[2]}|"></button>
-                                    </a>
-                                </div>
-                                <div th:if="${cant} != 3" class="d-flex justify-content-center">
-                                    <a th:with="color=1" th:href="@{/estilo/__${auto.id}__/__${color}__}">
-                                        <button class="btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[0]}|"></button>
-                                    </a>
-                                    <a th:with="color=2" th:href="@{/estilo/__${auto.id}__/__${color}__}">
-                                        <button type="submit" class="btn btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[1]}|"></button>
-                                    </a>
-                                    <a th:with="color=3" th:href="@{/estilo/__${auto.id}__/__${color}__}">
-                                        <button type="button" class="btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[2]}|"></button>
-                                    </a>
-                                    <a th:with="color=4" th:href="@{/estilo/__${auto.id}__/__${color}__}">
-                                        <button type="button" class="btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[3]}|"></button>
-                                    </a>
-                                    <a th:with="color=5" th:href="@{/estilo/__${auto.id}__/__${color}__}">
-                                        <button type="button" class="btn btn rounded-circle border border-dark ms-2 me-2 btn-style" th:style="|background-color:${auto.colores[4]}|"></button>
-                                    </a>
-                                </div>
-                            </div>
+                  <div class="card border">
+                    <div class="auto-product row">
+                      <div class="auto-small-img col-lg-2">
+                        <img th:if="${auto.color} == 0" th:each="estilo1 : ${auto.estilo1}"
+                          th:src="@{/imagen/auto-estilo/__${estilo1.id}__}" alt="" onclick="imgFunction(this)">
+                        <img th:if="${auto.color} == 1" th:each="estilo1 : ${auto.estilo1}"
+                          th:src="@{/imagen/auto-estilo/__${estilo1.id}__}" alt="" onclick="imgFunction(this)">
+                        <img th:if="${auto.color} == 2" th:each="estilo2 : ${auto.estilo2}"
+                          th:src="@{/imagen/auto-estilo/__${estilo2.id}__}" alt="" onclick="imgFunction(this)">
+                        <img th:if="${auto.color} == 3" th:each="estilo3 : ${auto.estilo3}"
+                          th:src="@{/imagen/auto-estilo/__${estilo3.id}__}" alt="" onclick="imgFunction(this)">
+                        <img th:if="${auto.color} == 4" th:each="estilo4 : ${auto.estilo4}"
+                          th:src="@{/imagen/auto-estilo/__${estilo4.id}__}" alt="" onclick="imgFunction(this)">
+                        <img th:if="${auto.color} == 5" th:each="estilo5 : ${auto.estilo5}"
+                          th:src="@{/imagen/auto-estilo/__${estilo5.id}__}" alt="" onclick="imgFunction(this)">
+                      </div>
+                      <div id="estilo" class="img-container col-lg-6">
+                        <img th:if="${auto.color} == 0" th:src="@{/imagen/auto-estilo/__${auto.estilo1[1].id}__}"
+                          th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
+                        <img th:if="${auto.color} == 1" th:src="@{/imagen/auto-estilo/__${auto.estilo1[1].id}__}"
+                          th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
+                        <img th:if="${auto.color} == 2" th:src="@{/imagen/auto-estilo/__${auto.estilo2[1].id}__}"
+                          th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
+                        <img th:if="${auto.color} == 3" th:src="@{/imagen/auto-estilo/__${auto.estilo3[1].id}__}"
+                          th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
+                        <img th:if="${auto.color} == 4" th:src="@{/imagen/auto-estilo/__${auto.estilo4[1].id}__}"
+                          th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
+                        <img th:if="${auto.color} == 5" th:src="@{/imagen/auto-estilo/__${auto.estilo5[1].id}__}"
+                          th:id="img_01" class="img-thumbnail border border-white car" alt="..." width="100%" height="auto">
+                        <div th:if="${cant} == 3" class="d-flex justify-content-center">
+                          <a th:with="color=1" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button class="btn btn-rounded-circle border border-dark ms-2 me-2 btn-style"
+                              th:style="|background-color:${auto.colores[0]}|"></button>
+                          </a>
+                          <a th:with="color=2" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="submit" class="btn btn-rounded-circle border border-dark ms-2 me-2 btn-style"
+                              th:style="|background-color:${auto.colores[1]}|"></button>
+                          </a>
+                          <a th:with="color=3" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="button" class="btn btn-rounded-circle border border-dark ms-2 me-2 btn-style"
+                              th:style="|background-color:${auto.colores[2]}|"></button>
+                          </a>
                         </div>
+                        <div th:if="${cant} != 3" class="d-flex justify-content-center">
+                          <a th:with="color=1" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button class="btn btn-rounded-circle border border-dark ms-2 me-2 btn-style"
+                              th:style="|background-color:${auto.colores[0]}|"></button>
+                          </a>
+                          <a th:with="color=2" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="submit" class="btn btn-rounded-circle border border-dark ms-2 me-2 btn-style"
+                              th:style="|background-color:${auto.colores[1]}|"></button>
+                          </a>
+                          <a th:with="color=3" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="button" class="btn btn-rounded-circle border border-dark ms-2 me-2 btn-style"
+                              th:style="|background-color:${auto.colores[2]}|"></button>
+                          </a>
+                          <a th:with="color=4" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="button" class="btn btn-rounded-circle border border-dark ms-2 me-2 btn-style"
+                              th:style="|background-color:${auto.colores[3]}|"></button>
+                          </a>
+                          <a th:with="color=5" th:href="@{/estilo/__${auto.id}__/__${color}__}">
+                            <button type="button" class="btn btn-rounded-circle border border-dark ms-2 me-2 btn-style"
+                              th:style="|background-color:${auto.colores[4]}|"></button>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="card shadow-lg d-flex justify-content-center align-items-center" style="width: 24rem;">
+                        <div class="card-body text-center">
+                          <div class="d-flex flex-column align-items-center">
+                            <h1 class="card-title mb-5 mt-5" th:text="${auto.marca} + ' ' + ${auto.name}"></h1>
+                            
+                            
+
+                            <p class="mb-5">
+                                <span class="fas fa-circle"></span> 2023
+                                <span class="fas fa-circle"></span> automático
+                                <span class="fas fa-circle"></span> 183mph
+                              </p>
+                              <h1 class="card-text display-4 mb-5" th:text="${auto.precio}"></h1>
+                            
+                            <a class="btn btn-warning btn-lg mb-5">Comprar</a>
+
+                            <div class="icons d-flex align-items-center mb-5">
+                                <div class="content">
+                                     <h3 class="mb-0"></h3>
+                                     <p th:text="${auto.disenio}" class="mb-0"></p>
+                                 </div>
+                             </div>
+
+
+                              <div class="d-flex align-items-center mb-5">
+                              <i class="bi bi-car-front-fill me-2 fs-1"></i>
+                              <i class="bi bi-speedometer me-2 fs-1"></i>
+                              <i class="bi bi-gem me-2 fs-1"></i>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      
                     </div>
+                  </div>
                 </div>
-            </section>
-           
+              </section>
+              
+              
             <section class="icons-container">
-
-                <div class="icons">
-                    <i class="bi bi-car-front-fill"></i>
-                    <div class="content">
-                        <h3>Diseño</h3>
-                        <p th:text="${auto.disenio}"></p>
-                    </div>
-                </div>
-            
-                <div class="icons">
-                    <i class="bi bi-speedometer"></i>
-                    <div class="content">
-                        <h3>Performance</h3>
-                        <p th:text="${auto.performance}"></p>
-                    </div>
-                </div>
-            
-                <div class="icons">
-                    <i class="bi bi-gem"></i>
-                    <div class="content">
-                        <h3>Exclusividad</h3>
-                        <p th:text="${auto.exclusividad}"></p>
-                    </div>
-                </div>
-            
                 
-            
+                <div class="icons d-flex align-items-center">
+                    <div class="content">
+                        <h3 class="mb-0"><i class="bi bi-speedometer me-2"></i>Performance</h3>
+                        <p th:text="${auto.performance}" class="mb-0"></p>
+                    </div>
+                </div>
+                <div class="icons d-flex align-items-center">
+                    <div class="content">
+                        <h3 class="mb-0"><i class="bi bi-gem me-2"></i>Exclusividad</h3>
+                        <p th:text="${auto.exclusividad}" class="mb-0"></p>
+                    </div>
+                </div>
             </section>
-
-
+            <br>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <a class="btn btn-warning btn-lg" id="btn-return" th:href="@{/principal}" role="button">Volver</a>
+            </div>
+            <br>
             <footer style="text-align: center; background-color: #f9d806;">
                 <div class="container">
                   <div class="row">
                     <div class="col-md-12">
-                      <p>&copy; Maxwheels. Todos los derechos reservados.</p>
+                      <p>&copy; Spring Cars. Todos los derechos reservados.</p>
                     </div>
                   </div>
                 </div>
@@ -141,6 +188,8 @@
 
         <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
         
+
+
         <script th:inline="javascript">
 
             function imgFunction(smallImg){
@@ -151,35 +200,37 @@
                 $('.zoomWindowContainer div').stop().css("background-image","url("+fullImg.src+")");
 
             }
-
-
         </script>
+
+
+
+
         <script th:inline="javascript">
-            $(".car").ezPlus({
-                zoomType: 'window',
-                lensShape: 'round',
-                lensSize: 200,
-                
+            $(document).ready(function() {
+                // Inicializar el plugin de zoom
+                $(".car").ezPlus({
+                    zoomType: 'window',
+                    lensShape: 'round',
+                    lensSize: 70,
+                    zoomWindowHeight: $(window).height() * 0.3,
+                    zoomWindowWidth: $(window).width() * 0.3,
+                });
+        
+                // Actualizar la imagen grande cuando se hace clic en la imagen pequeña
+                $(".auto-small-img img").click(function() {
+                    var fullImgSrc = $(this).attr("src");
+                    $(".img-container img").attr("src", fullImgSrc);
+                });
+        
+                // Actualizar el tamaño de la ventana de zoom al cambiar el tamaño de la ventana
+                $(window).resize(function() {
+                    $(".car").ezPlus({
+                        zoomWindowHeight: $(window).height() * 0.3,
+                        zoomWindowWidth: $(window).width() * 0.3
+                    });
+                });
             });
-
-            
-    
         </script>
-
-        <script th:inline="javascript">
-
-                function StyleFunction(estilo){
-            
-               
-                    var fullImg = document.getElementById("img_01");
-                    fullImg.src = smallImg.src;
-
-                    var src2=$(this).val().toString();
-                    $("#img_01").attr("src",src2);
-  
-                }
-
-        </script>
-
+        
     </body>
 </html>

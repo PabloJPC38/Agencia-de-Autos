@@ -683,8 +683,9 @@ th,td{
 }
 
 .auto{
-
+    
     margin-top: 100px;
+    background: #eee;
 }
 .img-portada{
     display: block;
@@ -707,17 +708,28 @@ th,td{
     margin-top: 30px;
     margin-left: 50px;
 }
-.auto-small-img{
-    float: left;
+
+.auto-product row{
     
+    background: #eee;
 }
-
 .img-container{
+    max-width: 100%;
+    overflow: hidden;
     float: right;
-    margin-left: 30px;
+    margin-left: 100px;
     width: 50px;
-}
+    padding-top: 60px;
 
+}
+.zoomWindow {
+    position: absolute;
+    transform: translate(-15%, -5%);
+    top: 30%;
+    right: 0;
+    
+  }
+  
 .form-registro{
 
     padding-top: 10rem;
@@ -802,7 +814,51 @@ th,td{
         font-size: 2rem;
     }
 
+    .zoomWindow {
+        position: absolute;
+        transform: translate(-15%, -5%);
+        top: 30%;
+        right: 0;
+        
+      }
+
 }
+@media (max-width: 768px) {
+    /* Estilos para pantallas de hasta 768px de ancho */
+    
+    .auto-small-img img {
+      margin-left: 0; /* Eliminar el margen izquierdo para ajustar las imágenes */
+    }
+    
+    .img-container {
+      float: none; /* Eliminar el flotado para centrar la imagen */
+      margin: 0 auto; /* Centrar horizontalmente */
+      width: 100%; /* Ajustar el ancho al 100% */
+      padding-top: 0; /* Eliminar el padding superior para ajustar la posición vertical */
+      text-align: center; /* Centrar el contenido */
+    }
+    
+    .btn-style {
+      margin: 10px; /* Añadir un margen para separar los botones */
+    }
+
+    .auto-small-img img {
+        margin-left: 0; /* Eliminar el margen izquierdo para ajustar las imágenes */
+      }
+      
+      .img-container {
+        float: none; /* Eliminar el flotado para centrar la imagen */
+        margin: 0 auto; /* Centrar horizontalmente */
+        width: 100%; /* Ajustar el ancho al 100% */
+        padding-top: 0; /* Eliminar el padding superior para ajustar la posición vertical */
+        text-align: center; /* Centrar el contenido */
+      }
+      
+      .btn-style {
+        margin: 10px; /* Añadir un margen para separar los botones */
+      }
+  }
+  
 
 @media (max-width:450px){
 
