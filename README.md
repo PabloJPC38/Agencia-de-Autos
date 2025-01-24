@@ -38,5 +38,22 @@ En el mismo repositorio hay una carpeta "Autos" para colocar las imagenes de los
 </div>
 
 
+## Atribuciones
 
+- Imagen del panel de control : <a href="https://unsplash.com/es/@jdweiher?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">JD Weiher</a> en <a href="https://unsplash.com/es/fotos/fotografia-timelapse-de-un-suv-verde-en-la-carretera-r_I6Y3eFrXE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+<a href="https://unsplash.com/es/@steven1302?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sven D</a> en <a href="https://unsplash.com/es/fotos/suv-ford-explorer-blanco-estacionado-a4S6KUuLeoM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      
+      
+- Imagen del panel de control 2 por : <a href="https://unsplash.com/es/@jdweiher?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">JD Weiher</a> en <a href="https://unsplash.com/es/fotos/fotografia-timelapse-de-un-suv-verde-en-la-carretera-r_I6Y3eFrXE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+- Imagen del auto promocional por: <a href="https://unsplash.com/es/@steven1302?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sven D</a> en <a href="https://unsplash.com/es/fotos/suv-ford-explorer-blanco-estacionado-a4S6KUuLeoM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+- Imagen del auto promocional 2, fotos pertenecientes a: <a href="https://unsplash.com/es/@robertschwarz?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Robert Schwarz</a> en <a href="https://unsplash.com/es/fotos/un-mini-cooper-rojo-aparcado-a-un-lado-de-la-carretera-STK-MZ2dvwY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+<a href="https://unsplash.com/es/@yxvi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Yuvraj Singh</a> en <a href="https://unsplash.com/es/fotos/coche-gris-zKILixwL90A?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+<a href="https://unsplash.com/es/@sonniehiles?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sonnie Hiles</a> en <a href="https://unsplash.com/es/fotos/coupe-descapotable-en-medio-de-la-carretera-PUBt7UPbJFY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+<a href="https://unsplash.com/es/@steven1302?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sven D</a> en <a href="https://unsplash.com/es/fotos/suv-ford-explorer-blanco-estacionado-a4S6KUuLeoM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+<a href="https://unsplash.com/es/@introspectivedsgn?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Erik Mclean</a> en <a href="https://unsplash.com/es/fotos/cupe-deportivo-plateado-en-carretera-asfaltada-ZRns2R5azu0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      
+
+      
+      
+      
 
